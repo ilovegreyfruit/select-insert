@@ -11,12 +11,19 @@ SELECT compilation_name
 FROM compilation
 WHERE realese_date BETWEEN '2018-01-01' AND '2020-12-31';
 
-SELECT MAX(perfomer_name) from perfomers
+SELECT perfomer_name from perfomers
 WHERE strpos(perfomer_name, ' ') = 0;
 
 SELECT name
 FROM track
-WHERE name like '%My%' or name like '%мой%';
+WHERE name ILIKE 'my %'
+OR name ILIKE '% my %'
+OR name ILIKE '% my'
+OR name ILIKE 'my'
+OR name ILIKE 'мой %'
+OR name ILIKE '% мой %'
+OR name ILIKE '% мой'
+OR name ILIKE 'мой';
 
 SELECT g.genres_names, COUNT(p.id) AS performer_count
 FROM Genre g
